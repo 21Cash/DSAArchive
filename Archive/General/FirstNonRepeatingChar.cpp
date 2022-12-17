@@ -1,0 +1,115 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef pair<int, int> pi;
+typedef long long ll;
+#define PI 3.141592653589793238462
+#define rep(i,a,b) for (int i = a; i < b; i++)
+#define PB push_back
+#define MP make_pair
+#define F first
+#define S second
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+#ifndef ONLINE_JUDGE
+#define db(x) cout<<#x<<" : "<<x<<endl;
+#define debug(x) cerr<<#x<<" : "<<x<<endl;
+#define pvec(v) cout<<"[";rep(x, 0, v.size()){cout<<v[x];if(x<v.size()-1)cout<<" ";}cout<<"]"<<endl;
+#else
+#define pvec(v) ;rep(x, 0, v.size()){cout<<v[x];if(x<v.size()-1)cout<<" ";}cout<<endl;
+#define db(x)
+#define debug(x)
+#endif
+#define getVal(c) (c-'a'+1)
+
+const int N = 0;
+
+void PrintMap(unordered_map<char, pi> &m) {
+	cout<<"Map : {"<<endl;
+	for(auto x : m) {
+		char f = x.F;
+		int cnt = x.S.F;
+		int i = x.S.S;
+		cout<<"    " << f << " : " << cnt << ", " << i << endl;
+	}
+	cout<<"}"<<endl;
+	
+}
+
+void Solution(){
+		
+	string str;
+	cin >> str;
+	
+	int n = sz(str);
+	
+	unordered_map<char, pi> m; // pi -> count, index
+	
+	for(int i = 0; i < n; i++) {
+		
+		char c = str[i];
+		pi ref = m[c];
+		m[c] = MP(ref.F + 1, i);
+	}
+	
+	char ans;
+	int lowestIndex = INT_MAX;
+	bool foundChar = false;
+	
+	for(auto x : m) {
+		char f = x.F;
+		int cnt = x.S.F;
+		int i = x.S.S;
+		
+		if(x.S.F == 1) {
+			if(x.S.S < lowestIndex) {
+				ans = x.F;
+				foundChar = true;
+			}
+		}
+	}
+	if(foundChar)
+		cout << ans << '\n';
+	else cout << -1;
+	
+	// cout << "Map Size: " << sz(m) << '\n';
+	// PrintMap(m);
+}
+
+
+
+
+signed int main(){
+	
+    #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // freopen("error.txt", "w", stderr);
+    #endif
+	
+	ios::sync_with_stdio(false);
+	cin.tie(0); cout.tie(0);
+	
+	int t = 1;
+	//cin >> t;
+	while(t--){
+		Solution();
+	}
+	return 0;
+}
+
+/* First Non Repeating Character in String*/
+
+
+/*	Sample Inputs
+
+Case #1:
+beans
+
+Case #2:
+abcdefghig
+
+Case #3:
+qwewqe
+
+*/
