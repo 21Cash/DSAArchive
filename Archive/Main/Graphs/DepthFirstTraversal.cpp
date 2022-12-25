@@ -67,9 +67,9 @@ void Solution() {
 signed int main() {
 
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
+    // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
-    freopen("error.txt", "w", stderr);
+    // freopen("error.txt", "w", stderr);
 #endif
     
     ios::sync_with_stdio(false);
