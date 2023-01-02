@@ -1,0 +1,4 @@
+InOrder - LNR
+PreOrder - NLR
+PostOrder - LRN
+
