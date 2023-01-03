@@ -8,6 +8,8 @@
 ->DFS In Graph
 
 -> Frog Jump Problem (Dp)
+-> N Queens
+-> merge intervals
 
 ->Find Duplicate in Array of 0 -> N
 
