@@ -24,46 +24,46 @@ typedef long long ll;
 
 const int N = 0;
 
-class Node {
+class TreeNode {
     public:
-    int data;
-    Node* L = NULL;
-    Node* R = NULL;
+    int val;
+    TreeNode* left = NULL;
+    TreeNode* right = NULL;
     
-    Node(int _data) {
-        this->data = _data;
-        this->L = NULL;
-        this->R = NULL;
+    TreeNode(int _data) {
+        this->val = _data;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
 
 //Creates BST From Level Order (BFS)
-Node* CreateTree(Node* root) {
+TreeNode* CreateTree() {
     int rootVal;
     cin >> rootVal;
-    root = new Node(rootVal);
+    TreeNode* root = new TreeNode(rootVal);
     
-    queue<Node*> q;
+    queue<TreeNode*> q;
     q.push(root);
     
     while (!q.empty()) {
     
-        Node* cur = q.front();
+        TreeNode* cur = q.front();
         q.pop();
         
         int l;
         cin >> l;
         
         if (l != -1) {
-            cur->L = new Node(l);
-            q.push(cur->L);
+            cur->left = new TreeNode(l);
+            q.push(cur->left);
         }
         
         int r;
         cin >> r;
         if (r != -1) {
-            cur->R = new Node(r);
-            q.push(cur->R);
+            cur->right = new TreeNode(r);
+            q.push(cur->right);
         }
         
     }
@@ -71,48 +71,43 @@ Node* CreateTree(Node* root) {
     return root;
 }
 
-
-//Iterative InOrder
-void InOrder(Node* root) {
-	
-	Node* cur = root;
-	stack<Node*> s;
-	
-	
-	while(1) {
-		if(cur) {
-			s.push(cur);
-			cur = cur->L;			
-		}
-		else {
-			if(s.empty()) break;
-			cout << s.top()->data << " ";
-			cur = s.top();
-			s.pop();
-			cur = cur->R;
-			
-		}
-	}
-	
+void PreOrder(TreeNode* root) {
+    if(!root) return;
+    stack<TreeNode*> s;
+    TreeNode* cur = root;
+    
+    while(1) {
+        if(cur) {
+            cout << cur->val << ' ';
+            if(cur->right) {
+                s.push(cur->right);
+            }
+            cur = cur->left;
+        }
+        else {
+            if(s.empty()) return;
+            cur = s.top();
+            s.pop();
+        }
+    }
+            
+    
 }
-
-
 
 
 void Solution(){
 		
-	Node* root = NULL;
-	root = CreateTree(root);
+	TreeNode* root = CreateTree();
 	
-	InOrder(root);
-	cout << "\n";
+	PreOrder(root);
+	
 }
 
 
 signed int main(){
 	
     #ifndef ONLINE_JUDGE
-    // freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
     freopen("error.txt", "w", stderr);
     #endif
@@ -127,22 +122,3 @@ signed int main(){
 	}
 	return 0;
 }
-
-/* Complexities
-
-Time Complexity : O(N)
-
-Space Complexity : O(N)
-
-*/
-
-
-/*	Sample Inputs
-
-Case #1:
-1
-2 3
-4 5 6 7
--1 -1 -1 -1 -1 -1 -1 -1 
-
-*/

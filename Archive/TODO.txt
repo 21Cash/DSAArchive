@@ -12,11 +12,11 @@
 -> merge intervals
 
 ->Find Duplicate in Array of 0 -> N
-
+->First and Last Occurence Of an Element In a Sorted Array
 Future TODO:
 ->Median Of A Stream
 ->Greatest Area in Histogram (Stack Problem)
-
+->Happy Number
 
 IMPORTANT:
 ->Rotate Array By K Elements O(1) Space Solution
